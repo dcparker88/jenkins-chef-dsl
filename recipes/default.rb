@@ -22,8 +22,6 @@ node.set['jenkins']['master']['checksum'] = '31f5c2a3f7e843f7051253d640f07f7c24d
 
 include_recipe 'jenkins::master'
 
-# Install any required plugins.
-include_recipe 'jenkins-chef-dsl::plugins'
 include_recipe 'jenkins-chef-dsl::auth'
 
 # Setup .gitconfig, needed on first chef
@@ -32,9 +30,6 @@ template "#{node['jenkins']['master']['home']}/.gitconfig" do
   user node['jenkins']['master']['user']
   group node['jenkins']['master']['group']
 end
-
-# Using Chef you will likey need these utilities to test.
-include_recipe 'jenkins-chef-dsl::chefdk'
 
 # Initial jenkinds-dsl-bootstrap job
 #  This job will be the only job created "by hand" and will create all other jobs.

@@ -22,8 +22,6 @@ node.set['jenkins']['master']['checksum'] = '31f5c2a3f7e843f7051253d640f07f7c24d
 
 include_recipe 'jenkins::master'
 
-include_recipe 'jenkins-chef-dsl::auth'
-
 # Setup .gitconfig, needed on first chef
 template "#{node['jenkins']['master']['home']}/.gitconfig" do
   source 'gitconfig.erb'
